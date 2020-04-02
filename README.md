@@ -45,7 +45,7 @@ fastClick.attach(document.body)
 
 将本地仓库与远端仓库建立一个链接，并为远端仓库取名为origin
 
-`git remote add origin https://github.com/liuminhere/Travel.git`
+`git remote add origin https://github.com/adagiomin/Travel.git`
 
 将本地的代码推到线上去
 
