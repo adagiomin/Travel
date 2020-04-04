@@ -1,8 +1,9 @@
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption">
+    <!-- 使用v-if防止空数组时就加载循环，导致数据加载进来后首先显示最后一张 -->
+    <swiper :options="swiperOption" v-if="showSwiper">
       <!-- slides -->
-      <swiper-slide v-for="item of swiperList" :key="item.id">
+      <swiper-slide v-for="item of list" :key="item.id">
         <img class="swiper-img" :src="item.imgUrl"/>
       </swiper-slide>
       <!-- Optional controls -->
@@ -14,25 +15,24 @@
 <script>
 export default {
   name: "HomeSwiper",
+  props:{
+    list:Array
+  },
   data() {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
         paginationClickable: true,
         loop: true, 
+        autoplay:5000
       },
-      swiperList:[
-        {
-          id:'0001',
-          imgUrl:'https://imgs.qunarzz.com/vs_ceph_vs_tts/705f885c-edc1-46f0-ad63-1514ae947e8e.jpg_r_480x320x95_113e9181.jpg'
-        },
-        {
-          id:'0002',
-          imgUrl:'https://imgs.qunarzz.com/p/tts9/1601/2b/2b2be928fa2e88f7.jpg_r_480x320x95_12718a30.jpg'
-        }
-      ]
     }
   },
+  computed:{
+    showSwiper(){
+      return this.list.length
+    }
+  }
 };
 </script>
 
@@ -43,7 +43,7 @@ export default {
   overflow: hidden
   width: 100%
   height:0
-  padding-bottom: 66.66%
+  padding-bottom: 31.25%
   background: #eee
   .swiper-img
     width: 100%
