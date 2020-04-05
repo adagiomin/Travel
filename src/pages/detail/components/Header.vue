@@ -37,14 +37,17 @@ export default {
             }
         }
     },
-    // 用了keep-alive，因此只要页面一被展示，activated钩子函数就会执行
-    activated(){
+    mounted(){
         window.addEventListener('scroll',this.handleScroll)
     },
+    // // 用了keep-alive，因此只要页面一被展示，activated钩子函数就会执行
+    // activated(){
+        
+    // },
     // 页面被隐藏的时候，解绑
-    deactivated(){
-        window.removeEventListener('scroll',this.handleScroll)
-    }
+    unmounted () {
+        window.removeEventListener('scroll', this.handleScroll)
+  }
 }
 </script>
 
