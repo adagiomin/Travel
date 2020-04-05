@@ -4,7 +4,7 @@
         热销推荐
     </div>
     <ul>
-        <li class="item border-bottom" v-for="item of list" :key="item.id">
+        <router-link  tag="li" class="item border-bottom" v-for="item of list" :key="item.id" :to="'/detail/'+item.id">
             <!-- 可于img外层包一个div,用来撑开图片，防止页面抖动 -->
             <img class="item-img" :src="item.imgUrl">
             <div class="item-info">
@@ -12,7 +12,7 @@
                 <p class="item-desc">{{item.desc}}</p>
                 <button class="item-button">查看详情</button>
             </div>
-        </li>
+        </router-link>
     </ul>
 </div>
 </template>
